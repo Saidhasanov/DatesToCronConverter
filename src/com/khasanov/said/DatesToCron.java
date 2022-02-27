@@ -2,12 +2,14 @@ package com.khasanov.said;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class DatesToCron implements DatesToCronConverter{
 
-    public String convert(String[] dates) {
+    public static class DatesToCronConvertException extends Exception {
+    }
+
+    public String convert(String[] dates) throws DatesToCronConvertException {
         int n = dates.length;
         List<String> second = new ArrayList<>();
         List<String> minute = new ArrayList<>();
@@ -74,10 +76,13 @@ public class DatesToCron implements DatesToCronConverter{
         }
         else cron += "* * *";
 
+        if (cron.equals("* * * * * *"))
+            throw new DatesToCronConvertException();
+
         return cron;
     }
 
     public String getImplementationInfo() {
-        return "Хасанов Саид Фархадович, DatesToCron, com.khasanov.said, ";
+        return "Хасанов Саид Фархадович, DatesToCron, com.khasanov.said, https://github.com/Saidhasanov/DatesToCronConverter";
     }
 }

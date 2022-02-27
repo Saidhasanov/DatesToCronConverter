@@ -2,7 +2,7 @@ package com.khasanov.said;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DatesToCron.DatesToCronConvertException {
         String[] dates1 = new String[] {
                 "2022-01-25T08:00:00",
                 "2022-01-25T08:30:00",
